@@ -16,7 +16,7 @@ class Environtment {
             height: window.innerHeight
         }
 
-        window.addEventListener('resize', this.onwindowresize)
+        window.addEventListener('resize', this.onwindowresize())
 
         const camera = this.camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
         camera.position.set(0, 0, 2)
@@ -41,7 +41,7 @@ class Environtment {
 
     async init() {
         const textureLoader = new THREE.TextureLoader()
-        
+
         this.scene.background = new THREE.CubeTextureLoader().load([
             'skybox/nx.png',
             'skybox/px.png',
@@ -119,14 +119,16 @@ class Environtment {
     }
 
     onwindowresize() {
-        this.sizes.width = window.innerWidth
-        this.sizes.height = window.innerHeight
+        return () => {
+            this.sizes.width = window.innerWidth
+            this.sizes.height = window.innerHeight
 
-        camera.aspect = this.sizes.width / this.sizes.height
-        camera.updateProjectionMatrix()
+            this.camera.aspect = this.sizes.width / this.sizes.height
+            this.camera.updateProjectionMatrix()
 
-        renderer.setSize(this.sizes.width, this.sizes.height)
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            this.renderer.setSize(this.sizes.width, this.sizes.height)
+            this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        }
     }
 
     animate() {
