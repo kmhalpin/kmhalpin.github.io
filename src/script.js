@@ -41,8 +41,15 @@ class Environtment {
 
     async init() {
         const textureLoader = new THREE.TextureLoader()
-
-        //this.scene.background = textureLoader.load('stars_milky_way.jpg')
+        
+        this.scene.background = new THREE.CubeTextureLoader().load([
+            'skybox/nx.png',
+            'skybox/px.png',
+            'skybox/py.png',
+            'skybox/ny.png',
+            'skybox/nz.png',
+            'skybox/pz.png',
+        ])
 
         const earth = new THREE.Mesh(
             new THREE.SphereGeometry(.7, 32, 32),
@@ -112,13 +119,13 @@ class Environtment {
     }
 
     onwindowresize() {
-        sizes.width = window.innerWidth
-        sizes.height = window.innerHeight
+        this.sizes.width = window.innerWidth
+        this.sizes.height = window.innerHeight
 
-        camera.aspect = sizes.width / sizes.height
+        camera.aspect = this.sizes.width / this.sizes.height
         camera.updateProjectionMatrix()
 
-        renderer.setSize(sizes.width, sizes.height)
+        renderer.setSize(this.sizes.width, this.sizes.height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     }
 
