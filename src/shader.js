@@ -38,7 +38,7 @@ void main(void) {
     float mixAmount = cosineAngleSunToNormal * 0.5 + 0.5;
 
     vec3 color = mix(nightColor, dayColor, mixAmount);
-    color = mix(color, cloudColor, 0.3);
+    color = mix(color, cloudColor, max(mixAmount * 0.55, 0.1));
 
     gl_FragColor = vec4(color, 1.0);
 }

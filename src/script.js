@@ -51,15 +51,16 @@ class Environtment {
             'skybox/pz.png',
         ])
 
+        const uniforms = {
+            sunDirection: { value: new THREE.Vector3(2, 0, 20) },
+            dayTexture: { value: textureLoader.load('earth_daymap.jpg') },
+            nightTexture: { value: textureLoader.load('earth_nightmap.jpg') },
+            cloudTexture: { value: textureLoader.load('earth_clouds.jpg') }
+        }
         const earth = new THREE.Mesh(
             new THREE.SphereGeometry(.7, 32, 32),
             new THREE.ShaderMaterial({
-                uniforms: {
-                    sunDirection: { value: new THREE.Vector3(2, 0, 20) },
-                    dayTexture: { value: textureLoader.load('earth_daymap.jpg') },
-                    nightTexture: { value: textureLoader.load('earth_nightmap.jpg') },
-                    cloudTexture: { value: textureLoader.load('earth_clouds.jpg') }
-                },
+                uniforms: uniforms,
                 vertexShader: vertex,
                 fragmentShader: fragment,
             })
