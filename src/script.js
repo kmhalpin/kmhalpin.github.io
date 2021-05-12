@@ -57,7 +57,8 @@ class Environtment {
                 uniforms: {
                     sunDirection: { value: new THREE.Vector3(2, 0, 20) },
                     dayTexture: { value: textureLoader.load('earth_daymap.jpg') },
-                    nightTexture: { value: textureLoader.load('earth_nightmap.jpg') }
+                    nightTexture: { value: textureLoader.load('earth_nightmap.jpg') },
+                    cloudTexture: { value: textureLoader.load('earth_clouds.jpg') }
                 },
                 vertexShader: vertex,
                 fragmentShader: fragment,

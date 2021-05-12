@@ -20,6 +20,7 @@ void main() {
 const fragment = `
 uniform sampler2D dayTexture;
 uniform sampler2D nightTexture;
+uniform sampler2D cloudTexture;
 
 varying vec2 vUv;
 varying vec3 vNormal;
@@ -28,6 +29,7 @@ varying vec3 vSunDir;
 void main(void) {
     vec3 dayColor = texture2D(dayTexture, vUv).rgb;
     vec3 nightColor = texture2D(nightTexture, vUv).rgb;
+    vec3 cloudColor = texture2D(cloudTexture, vUv).rgb;
 
     float cosineAngleSunToNormal = dot(normalize(vNormal), normalize(vSunDir));
 
@@ -36,6 +38,7 @@ void main(void) {
     float mixAmount = cosineAngleSunToNormal * 0.5 + 0.5;
 
     vec3 color = mix(nightColor, dayColor, mixAmount);
+    color = mix(color, cloudColor, 0.3);
 
     gl_FragColor = vec4(color, 1.0);
 }
