@@ -15,14 +15,14 @@ import {
 } from "@material-ui/core";
 
 const images = [
-  '/sample/Chrysanthemum.jpg',
-  '/sample/Desert.jpg',
-  '/sample/Hydrangeas.jpg',
-  '/sample/Jellyfish.jpg',
-  '/sample/Koala.jpg',
-  '/sample/Lighthouse.jpg',
-  '/sample/Penguins.jpg',
-  '/sample/Tulips.jpg',
+  './sample/Chrysanthemum.jpg',
+  './sample/Desert.jpg',
+  './sample/Hydrangeas.jpg',
+  './sample/Jellyfish.jpg',
+  './sample/Koala.jpg',
+  './sample/Lighthouse.jpg',
+  './sample/Penguins.jpg',
+  './sample/Tulips.jpg',
 ]
 
 const shaders = Shaders.create({
