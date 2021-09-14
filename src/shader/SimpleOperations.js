@@ -11,14 +11,14 @@ import {
 } from "@material-ui/core";
 
 const images = [
-  './sample/Chrysanthemum.jpg',
-  './sample/Desert.jpg',
-  './sample/Hydrangeas.jpg',
-  './sample/Jellyfish.jpg',
-  './sample/Koala.jpg',
-  './sample/Lighthouse.jpg',
-  './sample/Penguins.jpg',
-  './sample/Tulips.jpg',
+  '/gl-image-processing/sample/Chrysanthemum.jpg',
+  '/gl-image-processing/sample/Desert.jpg',
+  '/gl-image-processing/sample/Hydrangeas.jpg',
+  '/gl-image-processing/sample/Jellyfish.jpg',
+  '/gl-image-processing/sample/Koala.jpg',
+  '/gl-image-processing/sample/Lighthouse.jpg',
+  '/gl-image-processing/sample/Penguins.jpg',
+  '/gl-image-processing/sample/Tulips.jpg',
 ];
 
 export const state = {
