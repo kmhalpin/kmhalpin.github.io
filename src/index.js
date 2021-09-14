@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store, { ReduxContext } from './redux'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ReduxContext.Provider value={store()}>
+      <App />
+    </ReduxContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
