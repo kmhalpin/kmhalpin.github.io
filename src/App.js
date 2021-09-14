@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core";
 import GlslCanvas from "./components/GlslCanvas";
 import Form from "./components/Form";
-import { fragment, vertex, state, dispatch, form } from './shader/SimpleOperations'
+import { fragment, vertex, state, dispatch, form } from './shader/kernelConvolution'
 
 function App() {
   return (
