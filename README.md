@@ -1,3 +1,10 @@
-# Image Processing App
+# Random Page ¯\\\_(ツ)_/¯
 
-app url: [https://kmhalpin.github.io/gl-image-processing/](https://kmhalpin.github.io/gl-image-processing/)
+experimenting image processing with WebGL maybe gonna add more stuff in the future
+
+url: [https://kmhalpin.github.io](https://kmhalpin.github.io)
+
+routes:
+- [Edge Detection (sobel)](https://kmhalpin.github.io/edge-detection-sobel)
+- [Edge Detection (prewitt)](https://kmhalpin.github.io/edge-detection-prewitt)
+- [GLSL Hough Transform](https://kmhalpin.github.io/hough-transformation)
