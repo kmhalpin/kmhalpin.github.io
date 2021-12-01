@@ -9,6 +9,7 @@ import {
   MenuItem,
   FormControlLabel,
   Checkbox,
+  Slider,
 } from '@material-ui/core';
 import { resize } from '../utils';
 
@@ -80,6 +81,7 @@ precision lowp float;
 uniform sampler2D u_img;
 uniform vec2 u_resolution;
 uniform float u_mask;
+uniform float u_slider;
 
 uniform bool u_doGray;
 
@@ -106,12 +108,16 @@ void main() {
   n[6] = getPixel(u_img, v_texcoord + canvasPixel * vec2(-1,  1));
   n[7] = getPixel(u_img, v_texcoord + canvasPixel * vec2( 0,  1));
   n[8] = getPixel(u_img, v_texcoord + canvasPixel * vec2( 1,  1));
+  
+  if (v_texcoord.x >= u_slider / u_resolution.x) {
+    vec4 sobel_x = n[2] + (u_mask * n[5]) + n[8] - (n[0] + (u_mask * n[3]) + n[6]);
+    vec4 sobel_y = n[0] + (u_mask * n[1]) + n[2] - (n[6] + (u_mask * n[7]) + n[8]);
+    vec4 sobel = sqrt((sobel_x * sobel_x) + (sobel_y * sobel_y));
 
-  vec4 sobel_x = n[2] + (u_mask * n[5]) + n[8] - (n[0] + (u_mask * n[3]) + n[6]);
-  vec4 sobel_y = n[0] + (u_mask * n[1]) + n[2] - (n[6] + (u_mask * n[7]) + n[8]);
-  vec4 sobel = sqrt((sobel_x * sobel_x) + (sobel_y * sobel_y));
-
-  gl_FragColor = vec4(sobel.rgb, 1);
+    gl_FragColor = vec4(sobel.rgb, 1);
+  } else {
+    gl_FragColor = n[4];
+  }
 }
 `;
 
@@ -123,6 +129,7 @@ const EdgeDetection = ({ mask }) => {
   const [uniform, setUniform] = useState({
     u_mask: mask,
     u_doGray: false,
+    u_slider: 0,
   });
 
   if (canvas instanceof Canvas) {
@@ -154,10 +161,21 @@ const EdgeDetection = ({ mask }) => {
       <Grid item>
         <div style={{ width: '100%', height: '100%' }}>
           <canvas
-            style={{ maxHeight: '360px', maxWidth: '360px' }}
             ref={CanvasRef}
           />
         </div>
+        <Slider
+          color="secondary"
+          value={uniform.u_slider}
+          valueLabelDisplay="auto"
+          step={1}
+          min={0}
+          max={CanvasRef.current?.width || 0}
+          onChange={(e, newValue) => (newValue >= 0) && setUniform({
+            ...uniform,
+            u_slider: newValue,
+          })}
+        />
       </Grid>
       <Grid item xs={10} sm={10} md={10} lg={6} xl={4}>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>

@@ -9,8 +9,7 @@ const imageHandler = new Image();
 export const resize = (canvas, image) => {
   imageHandler.onload = () => {
     const canvasWidth = Math.min(300 * (window.innerWidth / 360), 360);
-    canvas.setAttribute('width', canvasWidth);
-    canvas.setAttribute('height', canvasWidth * (imageHandler.height / imageHandler.width));
+    canvas.setAttribute('style', `width: ${canvasWidth}px; height: ${canvasWidth * (imageHandler.height / imageHandler.width)}px;`);
     // alert(`${canvasWidth} ${imageHandler.height} ${imageHandler.width}`);
   };
   imageHandler.src = image;
