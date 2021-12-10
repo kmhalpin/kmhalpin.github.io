@@ -2,8 +2,6 @@ import { Texture } from 'glsl-canvas-js/dist/cjs/glsl';
 
 Texture.isTextureUrl = (text) => text && (/\.(jpg|jpeg|png|ogv|webm|mp4|bmp)$/i).test(text.split('?')[0]);
 
-export default {};
-
 const imageHandler = new Image();
 
 export const resize = (canvas, image) => {
@@ -18,3 +16,48 @@ export const resize = (canvas, image) => {
   // canvas.setAttribute('width', `${Math.min(400 * deviceWidth, 480)}px`);
   // canvas.setAttribute('height', `${Math.min(300 * deviceWidth, 360)}px`);
 };
+
+export const images = [
+  {
+    url: '/sample/lena_gray.bmp',
+    name: 'Lena',
+  },
+  {
+    url: '/sample/barbara_gray.bmp',
+    name: 'Barbara',
+  },
+  {
+    url: '/sample/Chrysanthemum.jpg',
+    name: 'Chrysanthemum',
+  },
+  {
+    url: '/sample/Desert.jpg',
+    name: 'Desert',
+  },
+  {
+    url: '/sample/Hydrangeas.jpg',
+    name: 'Hydrangeas',
+  },
+  {
+    url: '/sample/Jellyfish.jpg',
+    name: 'Jellyfish',
+  },
+  {
+    url: '/sample/Koala.jpg',
+    name: 'Koala',
+  },
+  {
+    url: '/sample/Lighthouse.jpg',
+    name: 'Lighthouse',
+  },
+  {
+    url: '/sample/Penguins.jpg',
+    name: 'Penguins',
+  },
+  {
+    url: '/sample/Tulips.jpg',
+    name: 'Tulips',
+  },
+];
+
+export default { resize, images };

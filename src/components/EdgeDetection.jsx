@@ -11,50 +11,7 @@ import {
   Checkbox,
   Slider,
 } from '@material-ui/core';
-import { resize } from '../utils';
-
-const images = [
-  {
-    url: '/sample/lena_gray.bmp',
-    name: 'Lena',
-  },
-  {
-    url: '/sample/barbara_gray.bmp',
-    name: 'Barbara',
-  },
-  {
-    url: '/sample/Chrysanthemum.jpg',
-    name: 'Chrysanthemum',
-  },
-  {
-    url: '/sample/Desert.jpg',
-    name: 'Desert',
-  },
-  {
-    url: '/sample/Hydrangeas.jpg',
-    name: 'Hydrangeas',
-  },
-  {
-    url: '/sample/Jellyfish.jpg',
-    name: 'Jellyfish',
-  },
-  {
-    url: '/sample/Koala.jpg',
-    name: 'Koala',
-  },
-  {
-    url: '/sample/Lighthouse.jpg',
-    name: 'Lighthouse',
-  },
-  {
-    url: '/sample/Penguins.jpg',
-    name: 'Penguins',
-  },
-  {
-    url: '/sample/Tulips.jpg',
-    name: 'Tulips',
-  },
-];
+import { resize, images } from '../utils';
 
 const vertex = `
 attribute vec2 a_position;
