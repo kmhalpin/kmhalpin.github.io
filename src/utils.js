@@ -3,10 +3,10 @@ import { Texture } from 'glsl-canvas-js/dist/cjs/glsl';
 Texture.isTextureUrl = (text) => text && (/\.(jpg|jpeg|png|ogv|webm|mp4|bmp)$/i).test(text.split('?')[0]);
 
 const imageHandler = new Image();
+const canvasWidth = Math.min(300 * (window.innerWidth / 360), 360);
 
 export const resize = (canvas, image) => {
   imageHandler.onload = () => {
-    const canvasWidth = Math.min(300 * (window.innerWidth / 360), 360);
     canvas.setAttribute('style', `width: ${canvasWidth}px; height: ${canvasWidth * (imageHandler.height / imageHandler.width)}px;`);
     // alert(`${canvasWidth} ${imageHandler.height} ${imageHandler.width}`);
   };

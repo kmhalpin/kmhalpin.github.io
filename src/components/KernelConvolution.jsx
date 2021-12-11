@@ -310,298 +310,299 @@ function KernelConvolution() {
           })}
         />
       </Grid>
-      <Grid item xs={10} sm={10} md={10} lg={6} xl={4} />
-      <Grid container justifyContent="center" alignItems="center" spacing={2}>
-        <Grid item xs={8}>
-          <FormControl
-            variant="outlined"
-            style={{ width: '100%' }}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">Pilih gambar</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              label="Pilih gambar"
+      <Grid item xs={10} sm={10} md={10} lg={6} xl={4}>
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item xs={8}>
+            <FormControl
+              variant="outlined"
+              style={{ width: '100%' }}
             >
-              {images.map((v, idx) => (
-                <MenuItem key={idx} value={v.url}>
-                  <img src={v.url} alt={v.name} height={25} />
-                  {' '}
-                  {v.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={4}>
-          <FormControlLabel
-            control={(
-              <Checkbox
-                checked={uniform.u_doGray}
-                onChange={(e) => setUniform({
-                  ...uniform,
-                  u_doGray: e.target.checked,
-                })}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
-              />
+              <InputLabel id="demo-simple-select-outlined-label">Pilih gambar</InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                label="Pilih gambar"
+              >
+                {images.map((v, idx) => (
+                  <MenuItem key={idx} value={v.url}>
+                    <img src={v.url} alt={v.name} height={25} />
+                    {' '}
+                    {v.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={4}>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  checked={uniform.u_doGray}
+                  onChange={(e) => setUniform({
+                    ...uniform,
+                    u_doGray: e.target.checked,
+                  })}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
 )}
-            label="Hitam putih"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControl
-            variant="outlined"
-            style={{ width: '100%' }}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">Pilih kernel tersedia</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={kernel}
-              onChange={(e) => setKernel(e.target.value)}
-              label="Pilih kernel tersedia"
-            >
-              <MenuItem key="custom" value="custom">
-                Custom
-              </MenuItem>
-              {Object.keys(kernels).map((key, idx) => (
-                <MenuItem key={idx} value={key}>
-                  {key}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid container item justifyContent="center" alignItems="center" spacing={1} xs={12}>
+              label="Hitam putih"
+            />
+          </Grid>
           <Grid item xs={12}>
-            <Typography gutterBottom>Kernel Value</Typography>
-          </Grid>
-          <Grid item xs={4}>
             <FormControl
               variant="outlined"
               style={{ width: '100%' }}
             >
-              <InputLabel htmlFor="kernel-0">Index 0</InputLabel>
-              <Input
-                id="kernel-0"
-                type="text"
-                value={customKernel.c_kernel_0}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_0: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[0]': +e.target.value,
-                  });
-                }}
-              />
+              <InputLabel id="demo-simple-select-outlined-label">Pilih kernel tersedia</InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={kernel}
+                onChange={(e) => setKernel(e.target.value)}
+                label="Pilih kernel tersedia"
+              >
+                <MenuItem key="custom" value="custom">
+                  Custom
+                </MenuItem>
+                {Object.keys(kernels).map((key, idx) => (
+                  <MenuItem key={idx} value={key}>
+                    {key}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-1">Index 1</InputLabel>
-              <Input
-                id="kernel-1"
-                type="text"
-                value={customKernel.c_kernel_1}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_1: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[1]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-2">Index 2</InputLabel>
-              <Input
-                id="kernel-2"
-                type="text"
-                value={customKernel.c_kernel_2}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_2: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[2]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-3">Index 3</InputLabel>
-              <Input
-                id="kernel-3"
-                type="text"
-                value={customKernel.c_kernel_3}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_3: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[3]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-4">Index 4</InputLabel>
-              <Input
-                id="kernel-4"
-                type="text"
-                value={customKernel.c_kernel_4}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_4: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[4]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-5">Index 5</InputLabel>
-              <Input
-                id="kernel-5"
-                type="text"
-                value={customKernel.c_kernel_5}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_5: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[5]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-6">Index 6</InputLabel>
-              <Input
-                id="kernel-6"
-                type="text"
-                value={customKernel.c_kernel_6}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_6: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[6]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-7">Index 7</InputLabel>
-              <Input
-                id="kernel-7"
-                type="text"
-                value={customKernel.c_kernel_7}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_7: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[7]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl
-              variant="outlined"
-              style={{ width: '100%' }}
-            >
-              <InputLabel htmlFor="kernel-8">Index 8</InputLabel>
-              <Input
-                id="kernel-8"
-                type="text"
-                value={customKernel.c_kernel_8}
-                onChange={(e) => {
-                  setCustomKernel({
-                    ...customKernel,
-                    c_kernel_8: e.target.value,
-                  });
-                  setKernel('custom');
-                  if (Number.isNaN(+e.target.value)) return;
-                  setUniform({
-                    ...uniform,
-                    'u_kernel[8]': +e.target.value,
-                  });
-                }}
-              />
-            </FormControl>
+          <Grid container item justifyContent="center" alignItems="center" spacing={1} xs={12}>
+            <Grid item xs={12}>
+              <Typography gutterBottom>Kernel Value</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-0">Index 0</InputLabel>
+                <Input
+                  id="kernel-0"
+                  type="text"
+                  value={customKernel.c_kernel_0}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_0: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[0]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-1">Index 1</InputLabel>
+                <Input
+                  id="kernel-1"
+                  type="text"
+                  value={customKernel.c_kernel_1}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_1: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[1]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-2">Index 2</InputLabel>
+                <Input
+                  id="kernel-2"
+                  type="text"
+                  value={customKernel.c_kernel_2}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_2: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[2]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-3">Index 3</InputLabel>
+                <Input
+                  id="kernel-3"
+                  type="text"
+                  value={customKernel.c_kernel_3}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_3: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[3]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-4">Index 4</InputLabel>
+                <Input
+                  id="kernel-4"
+                  type="text"
+                  value={customKernel.c_kernel_4}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_4: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[4]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-5">Index 5</InputLabel>
+                <Input
+                  id="kernel-5"
+                  type="text"
+                  value={customKernel.c_kernel_5}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_5: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[5]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-6">Index 6</InputLabel>
+                <Input
+                  id="kernel-6"
+                  type="text"
+                  value={customKernel.c_kernel_6}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_6: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[6]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-7">Index 7</InputLabel>
+                <Input
+                  id="kernel-7"
+                  type="text"
+                  value={customKernel.c_kernel_7}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_7: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[7]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl
+                variant="outlined"
+                style={{ width: '100%' }}
+              >
+                <InputLabel htmlFor="kernel-8">Index 8</InputLabel>
+                <Input
+                  id="kernel-8"
+                  type="text"
+                  value={customKernel.c_kernel_8}
+                  onChange={(e) => {
+                    setCustomKernel({
+                      ...customKernel,
+                      c_kernel_8: e.target.value,
+                    });
+                    setKernel('custom');
+                    if (Number.isNaN(+e.target.value)) return;
+                    setUniform({
+                      ...uniform,
+                      'u_kernel[8]': +e.target.value,
+                    });
+                  }}
+                />
+              </FormControl>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

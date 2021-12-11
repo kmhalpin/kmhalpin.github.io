@@ -6,6 +6,7 @@ import EdgeDetection from './components/EdgeDetection';
 import HoughTransformation from './components/HoughTransformation';
 import SimpleOperations from './components/SimpleOperations';
 import KernelConvolution from './components/KernelConvolution';
+// import Fourier from './components/Fourier';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Link to="edge-detection-prewitt">Edge Detection (Prewitt)</Link>
         {' '}
         <Link to="hough-transformation">Hough Transformation</Link>
+        {/* {' '}
+        <Link to="fourier">Fourier</Link> */}
       </nav>
       <Routes>
         <Route path="/" element={<p>Welcome</p>} />
@@ -28,6 +31,7 @@ function App() {
         <Route path="edge-detection-sobel" element={<EdgeDetection mask={2.0} />} />
         <Route path="edge-detection-prewitt" element={<EdgeDetection mask={1.0} />} />
         <Route path="hough-transformation" element={<HoughTransformation />} />
+        {/* <Route path="fourier" element={<Fourier />} /> */}
       </Routes>
     </BrowserRouter>
   );
